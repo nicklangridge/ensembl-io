@@ -63,7 +63,7 @@ sub chase_redirects {
     my $ua = LWP::UserAgent->new( max_redirect => $args->{'max_follow'} );
     $ua->timeout(10);
     $ua->env_proxy;
-    $ua->proxy([qw(http https)], $proxy) || ();
+    $ua->proxy([qw(http https ftp)], $proxy) || ();
     my $response = $ua->head($url);
     if ($response->is_success) {
       return $response->request->uri->as_string;
